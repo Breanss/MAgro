@@ -1,0 +1,42 @@
+.fixActionRow {
+  display: flex;
+  width: 400pt;
+}
+
+.spacer {
+  flex-grow: 1;
+}
+
+.full{
+  width: 100%;
+}
+
+.buttonAdd{
+  background-color: #45a46f;
+  border-style: none;
+}
+
+.buttonAdd:hover{
+  background-color:#67c68f;
+  border-style: none;
+}
+
+.buttonBack{
+  background-color:#ec494e;
+  border-style: none;
+}
+
+.buttonBack:hover{
+  background-color: #fe6b6f;
+  border-style: none;
+}
+
+.form-control:focus, .form-select:focus, .form-check-input:focus {
+  border-color: #56b570;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(86, 181, 112, 0.6);
+}
+
+.form-check-input:checked {
+  background-color: #56b570;
+  border-color: #56b570;
+}

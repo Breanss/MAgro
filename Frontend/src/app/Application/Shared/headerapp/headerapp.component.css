@@ -1,0 +1,40 @@
+.bi {
+  vertical-align: -.123em;
+  fill: currentColor;
+}
+
+.home{
+  background-color: #45a46f;
+}
+
+.nav-link:hover {
+  background-color: #45a46f;
+}
+
+@media (min-width: 1200px) {
+  .col-xl-2half {
+    width: 215pt;
+  }
+  .home, .nav-link:hover{
+    width: 267px;
+  }
+
+
+}
+
+@media (max-width: 1199px) {
+  @media (min-width: 576px) {
+    .col-xl-2half {
+      width: 154pt;
+    }
+    .home, .nav-link:hover{
+      width: 138pt;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .logo {
+    margin-left: 8pt;
+  }
+}

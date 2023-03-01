@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-header shadow-bottom">
+  <div class="container-fluid">
+    <a href="/" class="d-flex align-items-center  text-black text-decoration-none logo ms-5">
+      <img width="60" height="60" src="../../../assets/logo.png" class="logo mt-1 mb-1" alt=""/>
+      <span class="ms-4 d-none d-sm-inline fs-3 ">MAgro</span>
+    </a>
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    </ul>
+    <button type="button" class="btn btn-success button-color-register button-text me-5" routerLink="/register">
+      Rejestracja
+    </button>
+
+  </div>
+</nav>
+
+<div class="container mt-5">
+  <div class="card" style="padding: 20px;">
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)" class="needs-validation">
+      <h4 class="mb-4 text-center">Logowanie</h4>
+      <input type="text"
+             ngModel
+             name="userName"
+             id="userName"
+             placeholder="Login"
+             class="form-control mb-3"
+      >
+
+      <input type="password"
+             ngModel
+             name="userPassword"
+             id="userPassword"
+             placeholder="Hasło"
+             class="form-control mb-3"
+      >
+
+      <input type="submit"
+             value="Zaloguj"
+             class="btn  form-control button-color-register button-text mt-5">
+      <p class="error mt-3">{{message}}</p>
+    </form>
+  </div>
+</div>

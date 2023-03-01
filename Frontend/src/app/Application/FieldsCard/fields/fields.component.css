@@ -1,0 +1,78 @@
+.demo-table {
+  width: 100%;
+}
+
+.mat-mdc-row .mat-mdc-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  border-color: currentColor;
+}
+
+.demo-row-is-clicked {
+  background-color: #37a447;
+}
+
+.buttonIcon{
+  border-style: none;
+  background-color: white;
+
+}
+
+.buttonIconEdit{
+  color: #45a46f;
+}
+
+.buttonIconEdit:hover{
+  color:#67c68f
+}
+
+.buttonIconDelete{
+  color:#ec494e;
+}
+
+.buttonIconDelete:hover{
+  color: #fe6b6f;
+}
+
+.buttonAdd{
+  background-color: #45a46f;
+  border-style: none;
+}
+
+.buttonAdd:hover{
+  background-color:#67c68f;
+  border-style: none;
+}
+
+.buttonPdf{
+  background-color:#ec494e;
+  border-style: none;
+}
+
+.buttonPdf:hover{
+  background-color: #fe6b6f;
+  border-style: none;
+}
+
+.md-select-menu-container,
+.md-open-menu-container {
+  z-index:999999 !important;
+}
+
+.all{
+  width: 100%;
+  position:absolute;
+  z-index:0;
+}
+
+.buttonIconLocation{
+  color: #6495ed;
+}
+
+.buttonIconLocation:hover{
+  color: #86b7ff;
+}

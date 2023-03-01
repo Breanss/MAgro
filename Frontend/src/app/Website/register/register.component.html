@@ -1,0 +1,78 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-header shadow-bottom">
+  <div class="container-fluid">
+    <a href="/" class="d-flex align-items-center  text-black text-decoration-none logo ms-5">
+      <img width="60" height="60" src="../../../assets/logo.png" class="logo mt-1 mb-1" alt=""/>
+      <span class="ms-4 d-none d-sm-inline fs-3 ">MAgro</span>
+    </a>
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    </ul>
+    <button type="button" class="btn btn-success button-color-register button-text me-5" routerLink="/login">
+      Logowanie
+    </button>
+
+  </div>
+</nav>
+
+<div class="container mt-5">
+  <div class="card mb-5" style="padding: 20px;">
+    <form class="needs-validation" [formGroup]="editForm">
+      <h4 class="mb-4 text-center">Rejestracja</h4>
+      <div class="mb-3">
+        <div class="input-group has-validation">
+          <input formControlName="userName" placeholder="Nazwa użytkownika" name="userName" type="text" class="form-control" pattern="([a-zA-Z0-9]+){3}" id="username" aria-describedby="inputGroupPrepend" required>
+          <div class="invalid-feedback">
+            Nazwa użytkownika powinna mieć minimum 3 znaki i może posiadać tylko cyfry i litery
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <div class="input-group has-validation">
+          <input formControlName="userEmail" placeholder="Email" name="userEmail" type="email" class="form-control" pattern="^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$" id="userEmail" aria-describedby="inputGroupPrepend" required>
+          <div class="invalid-feedback">
+            Nieprawidłowy format email
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <div class="input-group has-validation">
+          <input formControlName="userTelephonNumber" placeholder="Telefon" name="userTelephonNumber" type="tel" class="form-control" pattern="([0-9]){9}" id="userTelephonNumber" aria-describedby="inputGroupPrepend" required>
+          <div class="invalid-feedback">
+            Nieprawidłowy format numeru telefonu
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <div class="input-group has-validation">
+          <input formControlName="userPassword" placeholder="Hasło" name="userPassword" type="password" class="form-control" pattern=".....+" id="userPassword" aria-describedby="inputGroupPrepend" required>
+          <div class="invalid-feedback">
+            Hasło powinno zawierać minimum 5 znaków i conajmniej jeden inny znak niż litera
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <div class="input-group has-validation">
+          <input formControlName="userFirstName" placeholder="Imie" name="userFirstName" type="text" class="form-control" pattern="([a-zA-ZĄąĘęÓóŚśŁłŹźŻżĆćŃń]+){3}" id="userFirstName" aria-describedby="inputGroupPrepend" required>
+          <div class="invalid-feedback">
+            Imie może zawierać tylko litery
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <div class="input-group has-validation">
+          <input formControlName="userLastName" placeholder="Nazwisko" name="userLastName" type="text" class="form-control" pattern="([a-zA-ZĄąĘęÓóŚśŁłŹźŻżĆćŃń]+){3}" id="userLastName" aria-describedby="inputGroupPrepend" required>
+          <div class="invalid-feedback">
+            Nazwisko może zawierać tylko litery
+          </div>
+        </div>
+      </div>
+      <button type="submit" (click)="registerUser()" class="btn button-color-register button-text mt-5 register">Dodaj</button>
+      <div class="mt-3" style="color: darkgreen" [innerHTML]="message"></div>
+    </form>
+  </div>
+  <div class="mt-4" style="color: white">s</div>
+</div>

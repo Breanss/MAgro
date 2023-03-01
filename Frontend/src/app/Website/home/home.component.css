@@ -1,0 +1,42 @@
+
+.bg-header{
+  background-color: white;
+}
+
+.color-text-black{
+  color: black;
+}
+
+@media (min-width: 900px) {
+  .container{
+    max-width: 80% !important
+  }
+}
+
+.bg-back{
+  background-color: #f8fafc;
+}
+
+.fields{
+  border-radius: 5px 150px 5px 150px;
+  height: 250pt;
+}
+
+.text-header-title{
+  font-family: "Arial", serif;
+  color: rgb(63, 71, 94);;
+  font-weight: bold;
+}
+
+.text-p-title{
+  font-size: 20pt;
+}
+
+.button-color-readmore{
+  background-color: #37a447;
+  font-size: 20pt;
+}
+
+.button-color-readmore:hover{
+  background-color: #158225;
+}

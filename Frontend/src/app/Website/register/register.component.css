@@ -1,0 +1,34 @@
+
+@media (min-width: 900px) {
+  .container{
+    width: 50%;
+  }
+}
+
+.button-color-register{
+  background-color: #37a447;
+  color: white;
+}
+
+.button-color-register:hover{
+  background-color: #158225;
+
+}
+.register{
+  width: 100%;
+}
+
+.button-text{
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.form-control:focus, .form-select:focus, .form-check-input:focus {
+  border-color: #56b570;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(86, 181, 112, 0.6);
+}
+
+.form-check-input:checked {
+  background-color: #56b570;
+  border-color: #56b570;
+}

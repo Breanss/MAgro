@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-header shadow-bottom">
+    <div class="container-fluid">
+      <a href="/" class="d-flex align-items-center  text-black text-decoration-none logo ms-5">
+        <img width="60" height="60" src="../../../assets/logo.png" class="logo mt-1 mb-1" alt=""/>
+        <span class="ms-4 d-none d-sm-inline fs-3 ">MAgro</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        </ul>
+        <button type="button" class="btn btn-success pt-2 pb-2 ps-3 pe-3 me-5 button-color-login button-text"  routerLink="/login">Logowanie</button>
+        <button type="button" class="btn btn-success pt-2 pb-2 ps-3 pe-3 me-5 button-color-register button-text" routerLink="/register">Rejestracja</button>
+        <button *ngIf="isLoggedIn()" type="button" class="btn btn-danger" (click)="logout()" >Logout</button>
+      </div>
+    </div>
+  </nav>
