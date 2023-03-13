@@ -1,7 +1,7 @@
 <app-headerapp>
   <div class="d-flex bd-highlight mb-3">
     <div class="me-auto p-2 bd-highlight">
-      <h4>Dodaj pole</h4>
+      <h4>Dodaj działke</h4>
     </div>
   </div>
   <hr/>
@@ -10,36 +10,38 @@
       <div>
         <div class="form-group">
           <label class="form-label mb-0">Województwo</label>
-          <select formControlName="fieldWojewodztwo" name="fieldWojewodztwo" id="fieldWojewodztwo" (change)="wojewCheck()"  class="form-select" >
-            <option *ngFor="let c of itemsWojew"   [ngValue]="c.name">{{c.name}}</option>
+          <select formControlName="wojewodztwo" name="wojewodztwo" id="wojewodztwo" (change)="wojewCheck()"
+                  class="form-select">
+            <option *ngFor="let c of itemsWojew" [ngValue]="c.name">{{c.name}}</option>
           </select>
         </div>
       </div>
       <div class="mt-2">
-        <label for="fieldPowiat" class="form-label">Powiat</label>
-        <select formControlName="fieldPowiat" name="fieldPowiat" id="fieldPowiat" (change)="powiatCheck()" class="form-select" required>
+        <label for="powiat" class="form-label">Powiat</label>
+        <select formControlName="powiat" name="powiat" id="powiat" (change)="powiatCheck()" class="form-select"
+                required>
           <option selected disabled value="">Wybierz...</option>
-          <option *ngFor="let c of itemsPowiat"   [ngValue]="c.name">{{c.name}}</option>
+          <option *ngFor="let c of itemsPowiat" [ngValue]="c.name">{{c.name}}</option>
         </select>
         <div class="invalid-feedback">
           Wybierz Powiat.
         </div>
       </div>
       <div class="mt-2">
-        <label for="fieldGmina" class="form-label">Gmina</label>
-        <select formControlName="fieldGmina" name="fieldGmina" id="fieldGmina" (change)="gminaCheck()" class="form-select" required>
+        <label for="gmina" class="form-label">Gmina</label>
+        <select formControlName="gmina" name="gmina" id="gmina" (change)="gminaCheck()" class="form-select" required>
           <option selected disabled value="">Wybierz...</option>
-          <option *ngFor="let c of itemsGmina"   [ngValue]="c.name">{{c.name}}</option>
+          <option *ngFor="let c of itemsGmina" [ngValue]="c.name">{{c.name}}</option>
         </select>
         <div class="invalid-feedback">
           Wybierz Gminę.
         </div>
       </div>
       <div class="mt-2">
-        <label for="fieldMiejscowosc" class="form-label">Miejscowość</label>
-        <select formControlName="fieldMiejscowosc" name="fieldMiejscowosc" id="fieldMiejscowosc"  class="form-select" required>
+        <label for="miejscowosc" class="form-label">Miejscowość</label>
+        <select formControlName="miejscowosc" name="miejscowosc" id="miejscowosc" class="form-select" required>
           <option selected disabled value="">Wybierz...</option>
-          <option *ngFor="let c of itemsMiejscowosc"   [ngValue]="c.name">{{c.name}}</option>
+          <option *ngFor="let c of itemsMiejscowosc" [ngValue]="c.name">{{c.name}}</option>
         </select>
         <div class="invalid-feedback">
           Wybierz miejscowość.
@@ -48,7 +50,8 @@
       <div class="mt-2">
         <label for="validationNumber" class="form-label">Numer ewidencyjny</label>
         <div class="input-group has-validation">
-          <input formControlName="fieldNumberRegistration" name="fieldNumberRegistration" type="text" class="form-control" pattern="[a-z0-9]+" id="validationNumber" aria-describedby="inputGroupPrepend" required>
+          <input formControlName="numberRegistration" name="numberRegistration" type="text" class="form-control"
+                 pattern="[a-z0-9/]+" id="validationNumber" aria-describedby="inputGroupPrepend" required>
           <div class="invalid-feedback">
             Nieprawidłowy format numeru ewidencyjnego
           </div>
@@ -57,16 +60,18 @@
       <div class="mt-2">
         <label for="validationName" class="form-label">Nazwa pola</label>
         <div class="input-group has-validation">
-          <input formControlName="fieldName" name="fieldName" type="text" class="form-control" pattern="[A-Za-z][A-Z-a-z0-9]+" id="validationName" aria-describedby="inputGroupPrepend" required>
+          <input formControlName="name" name="name" type="text" class="form-control" pattern="[A-Za-z][A-Z-a-z0-9]+"
+                 id="validationName" aria-describedby="inputGroupPrepend" required>
           <div class="invalid-feedback">
             Nieprawidłowy format nazwy własnej
           </div>
         </div>
       </div>
       <div class="mt-2">
-        <label for="fieldArea" class="form-label">Obszar</label>
+        <label for="area" class="form-label">Obszar</label>
         <div class="input-group has-validation">
-          <input formControlName="fieldArea" name="fieldArea" type="number" class="form-control" step="0.01" pattern="[0-9]+\\.?[0-9]+" id="fieldArea" aria-describedby="inputGroupPrepend" required>
+          <input formControlName="area" name="area" type="number" class="form-control" step="0.01"
+                 pattern="[0-9]+\\.?[0-9]+" id="area" aria-describedby="inputGroupPrepend" required>
           <div class="invalid-feedback">
             Nieprawidłowy format wielkości działki
           </div>
@@ -75,7 +80,8 @@
       <div class="form-row mt-2">
         <div class="form-group">
           <label class="form-label mb-0">Kategoria agronomiczna gleby</label>
-          <select formControlName="fieldArgonomicCategory" name="fieldArgonomicCategory" id="fieldArgonomicCategory" class="form-select">
+          <select formControlName="argonomicCategory" name="argonomicCategory" id="argonomicCategory"
+                  class="form-select">
             <option value="Bardzo Lekka">Bardzo Lekka</option>
             <option value="Lekka">Lekka</option>
             <option value="Średnia">Średnia</option>
@@ -86,18 +92,20 @@
       <div class="form-row mt-2">
         <label>Forma posiadania</label>
         <div class="form-group">
-          <input formControlName="fieldProperty" class="form-check-input" value="Własność" type="radio" name="fieldProperty" id="fieldProperty" checked>
+          <input formControlName="property" class="form-check-input" value="Własność" type="radio" name="property"
+                 id="property" checked>
           <label class="form-check-label">Własność</label>
-          <input formControlName="fieldProperty" class="form-check-input ms-5" value="Dzierżawa" type="radio" name="fieldProperty" id="fieldProperty1">
+          <input formControlName="property" class="form-check-input ms-5" value="Dzierżawa" type="radio" name="property"
+                 id="property1">
           <label class="form-check-label">Dzierżawa</label>
           <p class="error"></p>
         </div>
       </div>
       <div class="form-row mt-2">
         <div class="text-center">
-          <button type="submit" (click)="addFields()"  class="btn btn-primary mt-3 me-3 buttonAdd">Dodaj</button>
+          <button type="submit" (click)="addFields()" class="btn btn-primary mt-3 me-3 buttonAdd">Dodaj</button>
           <a routerLink="/field" class="btn btn-primary mt-3 buttonBack">Anuluj</a>
-          <div class="mt-3"  [innerHTML]="message"></div>
+          <div class="mt-3" [innerHTML]="message"></div>
         </div>
       </div>
     </form>

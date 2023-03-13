@@ -1,0 +1,50 @@
+<app-headerapp>
+  <div>
+    <form method="post" [formGroup]="addSeasonForm">
+      <div class="d-flex bd-highlight mb-3">
+        <div class="me-auto p-2 bd-highlight">
+          <h4>Uprawy</h4>
+        </div>
+        <div class="p-2 bd-highlight">
+          <select formControlName="year" id="year" class="form-select">
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+            <option value="2025">2025</option>
+            <option value="2026">2026</option>
+            <option value="2027">2027</option>
+          </select>
+        </div>
+        <div class="p-2 bd-highlight">
+          <button type="submit" (click)="addSeason()" class="btn btn-primary buttonAdd">Dodaj sezon</button>
+        </div>
+      </div>
+      <hr>
+      <div class="col-md-12 mt-5">
+        <div class="card mb-4 rounded-3 shadow-sm" *ngFor="let c of itemsSeason"  >
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">Sezon {{c.year}}</h4>
+          </div>
+          <div class="card-body" >
+              <p>Całkowity obszar do zadeklarowania upraw to: {{area[c.seasonId]}} ha</p>
+              <span class="ok">
+                <p *ngIf="area[whetherDeclared]; else elseBlock" >Zadeklarowano już uprawy na wszystkich działkach!</p>
+              </span>
+            <ng-template #elseBlock><span class="errorr">Nie zadeklarowano jeszcze upraw na wszystkich działkach!</span></ng-template>
+
+            <div class="bd-highlight mt-2">
+              <a class="btn btn-primary btn-sm buttonAdd" download>Zadeklaruj uprawy</a>
+              <a class="btn btn-primary btn-sm ms-3 buttonPdf">Zakończ sezon</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</app-headerapp>

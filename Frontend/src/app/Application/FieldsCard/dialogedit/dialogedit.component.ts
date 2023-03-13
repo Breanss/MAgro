@@ -18,17 +18,17 @@ export class DialogeditComponent implements OnInit {
   editForm!:FormGroup;
   ngOnInit(): void {
     this.fieldService.function()
-    this.message=this.data.fieldName
+    this.message=this.data.name
     this.editForm=this.formBuilder.group({
-      fieldArea:'',
-      fieldArgonomicCategory:'',
-      fieldProperty:''
+      area:'',
+      argonomicCategory:'',
+      property:''
     })
 
       if(this.data) {
-        this.editForm.controls['fieldArea'].setValue(this.data.fieldArea);
-        this.editForm.controls['fieldArgonomicCategory'].setValue(this.data.fieldArgonomicCategory);
-        this.editForm.controls['fieldProperty'].setValue(this.data.fieldProperty);
+        this.editForm.controls['area'].setValue(this.data.area);
+        this.editForm.controls['argonomicCategory'].setValue(this.data.argonomicCategory);
+        this.editForm.controls['property'].setValue(this.data.property);
       }
 
   }
@@ -44,9 +44,9 @@ export class DialogeditComponent implements OnInit {
         }
 
       })
-    this.data.fieldArea = this.editForm.controls['fieldArea'].value
-    this.data.fieldArgonomicCategory = this.editForm.controls['fieldArgonomicCategory'].value
-    this.data.fieldProperty = this.editForm.controls['fieldProperty'].value
+    this.data.area = this.editForm.controls['area'].value
+    this.data.argonomicCategory = this.editForm.controls['argonomicCategory'].value
+    this.data.fieldProperty = this.editForm.controls['property'].value
 
     if (tmp) {
       this.fieldService.editField(this.data, this.data.fieldId).subscribe(

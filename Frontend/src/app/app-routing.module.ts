@@ -10,6 +10,10 @@ import {HomeappComponent} from "./Application/HomeCard/homeapp/homeapp.component
 import {FieldsComponent} from "./Application/FieldsCard/fields/fields.component";
 import {AddfieldComponent} from "./Application/FieldsCard/addfield/addfield.component";
 import {DialogeditComponent} from "./Application/FieldsCard/dialogedit/dialogedit.component";
+import {CropsComponent} from "./Application/CropsCard/crops/crops.component";
+import {TreatmentsComponent} from "./Application/TreatmentsCard/treatments/treatments.component";
+import {FinancesComponent} from "./Application/FinancesCard/finances/finances.component";
+import {YieldComponent} from "./Application/YieldCard/yield/yield.component";
 
 
 const routes: Routes = [
@@ -22,6 +26,14 @@ const routes: Routes = [
   { path: 'field/addfield/uldkitems/:id', component:AddfieldComponent, canActivate:[AuthGuard],data:{roles:['User']}},
   { path: 'field/dell/:id', component:FieldsComponent, canActivate:[AuthGuard],data:{roles:['User']}},
   { path: 'field/edit/:id', component:DialogeditComponent, canActivate:[AuthGuard],data:{roles:['User']}},
+  { path: 'seasons/addseason', component:CropsComponent, canActivate:[AuthGuard],data:{roles:['User']}},
+  { path: 'seasons', component:CropsComponent, canActivate:[AuthGuard],data:{roles:['User']}},
+  { path: 'crops', component:CropsComponent, canActivate:[AuthGuard],data:{roles:['User']}},
+  { path: 'crops/totalarea', component:CropsComponent, canActivate:[AuthGuard],data:{roles:['User']}},
+  { path: 'crops/whetheralldeclared', component:CropsComponent, canActivate:[AuthGuard],data:{roles:['User']}},
+  { path: 'treatments', component:TreatmentsComponent, canActivate:[AuthGuard],data:{roles:['User']}},
+  { path: 'finances', component:FinancesComponent, canActivate:[AuthGuard],data:{roles:['User']}},
+  { path: 'yields', component:YieldComponent, canActivate:[AuthGuard],data:{roles:['User']}},
   { path: 'login', component:LoginComponent },
   { path: 'register', component:RegisterComponent },
   { path: 'forbidden', component:ForbiddenComponent }

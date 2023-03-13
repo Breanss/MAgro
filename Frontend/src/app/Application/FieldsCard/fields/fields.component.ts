@@ -19,10 +19,10 @@ export class FieldsComponent implements OnInit{
 
   @ViewChild("MapComponent") component?: MapComponent;
 
-  public dataSource = [{ fieldNumberRegistration:String, fieldName:String, fieldArea:String, fieldArgonomicCategory:String, fieldProperty:String, fieldId:Number}];
+  public dataSource = [{ numberRegistration:String, name:String, area:String, argonomicCategory:String, property:String, fieldId:Number}];
 
   constructor(private fieldService: FieldService, public dialog: MatDialog) {}
-  displayedColumns: string[] = ['fieldName', 'fieldNumberRegistration', 'fieldArea', 'fieldArgonomicCategory', 'fieldProperty', 'fieldAction'];
+  displayedColumns: string[] = ['name', 'numberRegistration', 'area', 'argonomicCategory', 'property', 'fieldAction'];
   ngOnInit(): void {
     this.allField();
   }

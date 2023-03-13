@@ -1,45 +1,45 @@
 <app-headerapp class="all" >
   <div class="d-flex bd-highlight mb-3">
     <div class="me-auto p-2 bd-highlight">
-      <h4>Pola</h4>
+      <h4>Działki</h4>
     </div>
     <div class="p-2 bd-highlight">
       <a (click)="pdfFieldUser()" class="btn btn-primary btn-sm me-1 buttonPdf" download>Generuj pdf</a>
-      <a routerLink="/field/addfield" class="btn btn-primary btn-sm buttonAdd">Dodaj pole</a>
+      <a routerLink="/field/addfield" class="btn btn-primary btn-sm buttonAdd">Dodaj działke</a>
     </div>
   </div>
   <hr/>
   <app-map #MapComponent ></app-map>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table mt-3">
 
-    <!-- Position Column -->
-    <ng-container matColumnDef="fieldName">
+
+    <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef>Nazwa</th>
-      <td mat-cell *matCellDef="let element">{{element.fieldName}}</td>
+      <td mat-cell *matCellDef="let element">{{element.name}}</td>
     </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="fieldNumberRegistration">
+
+    <ng-container matColumnDef="numberRegistration">
       <th mat-header-cell *matHeaderCellDef>Numer działki</th>
-      <td mat-cell *matCellDef="let element">{{element.fieldNumberRegistration}}</td>
+      <td mat-cell *matCellDef="let element">{{element.numberRegistration}}</td>
     </ng-container>
 
-    <!-- Weight Column -->
-    <ng-container matColumnDef="fieldArea">
+
+    <ng-container matColumnDef="area">
       <th mat-header-cell *matHeaderCellDef>Obszar</th>
-      <td mat-cell *matCellDef="let element">{{element.fieldArea}}</td>
+      <td mat-cell *matCellDef="let element">{{element.area}}</td>
     </ng-container>
 
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="fieldArgonomicCategory">
+
+    <ng-container matColumnDef="argonomicCategory">
       <th mat-header-cell *matHeaderCellDef>Argonomia</th>
-      <td mat-cell *matCellDef="let element">{{element.fieldArgonomicCategory}}</td>
+      <td mat-cell *matCellDef="let element">{{element.argonomicCategory}}</td>
     </ng-container>
 
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="fieldProperty">
+
+    <ng-container matColumnDef="property">
       <th mat-header-cell *matHeaderCellDef>Forma posiadania</th>
-      <td mat-cell *matCellDef="let element">{{element.fieldProperty}}</td>
+      <td mat-cell *matCellDef="let element">{{element.property}}</td>
     </ng-container>
 
     <ng-container matColumnDef="fieldAction">
@@ -48,7 +48,7 @@
         <button (click)="openDialog(element)" class="buttonIcon buttonIconEdit">
           <mat-icon>edit</mat-icon>
         </button>
-        <button (click)="plotMap(element.fieldNumber, element.fieldNumberRegistration)" class="buttonIcon buttonIconLocation" >
+        <button (click)="plotMap(element.number, element.numberRegistration)" class="buttonIcon buttonIconLocation" >
           <mat-icon> my_location</mat-icon>
         </button>
         <button (click)="deleteField(element.fieldId)" class="buttonIcon buttonIconDelete">
@@ -60,7 +60,6 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr
       mat-row
-
       *matRowDef="let row; columns: displayedColumns;"
     ></tr>
   </table>

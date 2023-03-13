@@ -25,6 +25,10 @@ import { DialogeditComponent } from './Application/FieldsCard/dialogedit/dialoge
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddfieldComponent } from './Application/FieldsCard/addfield/addfield.component';
+import { CropsComponent } from './Application/CropsCard/crops/crops.component';
+import { TreatmentsComponent } from './Application/TreatmentsCard/treatments/treatments.component';
+import { FinancesComponent } from './Application/FinancesCard/finances/finances.component';
+import { YieldComponent } from './Application/YieldCard/yield/yield.component';
 
 
 @NgModule({
@@ -43,6 +47,10 @@ import { AddfieldComponent } from './Application/FieldsCard/addfield/addfield.co
     MapComponent,
     DialogeditComponent,
     AddfieldComponent,
+    CropsComponent,
+    TreatmentsComponent,
+    FinancesComponent,
+    YieldComponent,
 
 
   ],

@@ -2,9 +2,9 @@
   <h4>{{message}}</h4>
 <form class="needs-validation full" name="addFields" novalidate method="post" [formGroup]="editForm">
   <div class="mt-2">
-    <label for="fieldArea" class="form-label">Obszar</label>
+    <label class="form-label">Obszar</label>
     <div class="input-group has-validation">
-      <input  name="fieldArea" type="number" class="form-control" formControlName="fieldArea" step="0.01" pattern="[0-9]+\\.?[0-9]+" id="fieldArea" aria-describedby="inputGroupPrepend" required>
+      <input  name="area" type="number" class="form-control" formControlName="area" step="0.01" pattern="[0-9]+\\.?[0-9]+" id="area" aria-describedby="inputGroupPrepend" required>
       <div class="invalid-feedback">
         Nieprawidłowy format wielkości działki
       </div>
@@ -13,7 +13,7 @@
   <div class="form-row mt-2">
     <div class="form-group">
       <label class="form-label mb-0">Kategoria agronomiczna gleby</label>
-      <select formControlName="fieldArgonomicCategory" name="fieldArgonomicCategory" id="argonomicCategory" class="form-select">
+      <select formControlName="argonomicCategory" name="argonomicCategory" id="argonomicCategory" class="form-select">
         <option value="Bardzo Lekka">Bardzo Lekka</option>
         <option value="Lekka">Lekka</option>
         <option value="Średnia">Średnia</option>
@@ -24,9 +24,9 @@
   <div class="form-row mt-2">
     <label>Forma posiadania</label>
     <div class="form-group">
-      <input formControlName="fieldProperty" class="form-check-input" value="Własność" type="radio" name="fieldProperty" id="property3" checked>
+      <input formControlName="property" class="form-check-input" value="Własność" type="radio" name="property" id="property3" checked>
       <label class="form-check-label">Własność</label>
-      <input formControlName="fieldProperty" class="form-check-input ms-5" value="Dzierżawa" type="radio" name="fieldProperty" id="property4">
+      <input formControlName="property" class="form-check-input ms-5" value="Dzierżawa" type="radio" name="property" id="property4">
       <label class="form-check-label">Dzierżawa</label>
       <p class="error"></p>
     </div>

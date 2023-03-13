@@ -15,29 +15,6 @@ interface uldkItem {
 })
 export class AddfieldComponent implements OnInit {
 
-  search_types_by_option = {
-    Wojewodztwo: {
-      param: "GetVoivodeshipById",
-      result: "voivodeship",
-    },
-    Powiat: {
-      param: "GetCountyById",
-      result: "county",
-    },
-    Gmina: {
-      param: "GetCommuneById",
-      result: "commune",
-    },
-    Region: {
-      param: "GetRegionById",
-      result: "region",
-    },
-    Dzialka: {
-      param: "GetParcelById",
-      result: "geom_wkt",
-    },
-  };
-
   message: String = ''
   editForm!: FormGroup;
   itemsWojew!: uldkItem[];
@@ -52,25 +29,25 @@ export class AddfieldComponent implements OnInit {
 
   async ngOnInit(){
     this.editForm = this.formBuilder.group({
-      fieldWojewodztwo: '',
-      fieldPowiat: '',
-      fieldGmina: '',
-      fieldMiejscowosc: '',
-      fieldProperty: '',
-      fieldNumberRegistration: '',
-      fieldName: '',
-      fieldArea: '',
-      fieldArgonomicCategory: '',
-      fieldNumber:'',
+      wojewodztwo: '',
+      powiat: '',
+      gmina: '',
+      miejscowosc: '',
+      property: '',
+      numberRegistration: '',
+      name: '',
+      area: '',
+      argonomicCategory: '',
+      number:'',
     })
 
 
-    this.editForm.controls['fieldProperty'].setValue("Własność");
-    this.editForm.controls['fieldArgonomicCategory'].setValue("Bardzo Lekka");
+    this.editForm.controls['property'].setValue("Własność");
+    this.editForm.controls['argonomicCategory'].setValue("Bardzo Lekka");
     this.fieldService.function();
-    this.editForm.controls['fieldPowiat'].disable();
-    this.editForm.controls['fieldGmina'].disable();
-    this.editForm.controls['fieldMiejscowosc'].disable();
+    this.editForm.controls['powiat'].disable();
+    this.editForm.controls['gmina'].disable();
+    this.editForm.controls['miejscowosc'].disable();
 
 
     this.fieldService.getUldkItems("Wojewodztwo").subscribe(
@@ -81,10 +58,10 @@ export class AddfieldComponent implements OnInit {
 
   async wojewCheck() {
 
-    this.editForm.controls['fieldPowiat'].enable();
-    this.editForm.controls['fieldGmina'].disable();
-    this.editForm.controls['fieldMiejscowosc'].disable();
-    let tmpp = this.editForm.controls['fieldWojewodztwo'].value;
+    this.editForm.controls['powiat'].enable();
+    this.editForm.controls['gmina'].disable();
+    this.editForm.controls['miejscowosc'].disable();
+    let tmpp = this.editForm.controls['wojewodztwo'].value;
     let tmp=""
     this.itemsWojew.forEach(x=>{
       if(x.name==tmpp){
@@ -99,9 +76,9 @@ export class AddfieldComponent implements OnInit {
   }
 
   async powiatCheck() {
-    this.editForm.controls['fieldGmina'].enable();
-    this.editForm.controls['fieldMiejscowosc'].disable();
-    let tmpp = this.editForm.controls['fieldPowiat'].value;
+    this.editForm.controls['gmina'].enable();
+    this.editForm.controls['miejscowosc'].disable();
+    let tmpp = this.editForm.controls['powiat'].value;
     let tmp=""
     this.itemsPowiat.forEach(x=>{
       if(x.name==tmpp){
@@ -115,8 +92,8 @@ export class AddfieldComponent implements OnInit {
   }
 
   async gminaCheck(){
-    this.editForm.controls['fieldMiejscowosc'].enable();
-    let tmpp = this.editForm.controls['fieldGmina'].value;
+    this.editForm.controls['miejscowosc'].enable();
+    let tmpp = this.editForm.controls['gmina'].value;
     let tmp=""
     this.itemsGmina.forEach(x=>{
       if(x.name==tmpp){
@@ -149,9 +126,9 @@ export class AddfieldComponent implements OnInit {
 
     if(this.itemsMiejscowosc!=null)
     this.itemsMiejscowosc.forEach(x=>{
-      if(x.name==this.editForm.controls['fieldMiejscowosc'].value){
+      if(x.name==this.editForm.controls['miejscowosc'].value){
         i=x.teryt;
-        this.editForm.controls['fieldNumber'].setValue(x.teryt);
+        this.editForm.controls['number'].setValue(x.teryt);
       }
     });
 
