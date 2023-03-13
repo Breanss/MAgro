@@ -10,7 +10,6 @@ import com.example.demo.service.UserService;
 import com.example.demo.tools.Formater;
 import com.example.demo.uldk.AdministrativeNames;
 import com.example.demo.validate.AddFieldValidator;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
@@ -27,7 +26,6 @@ import javax.validation.Valid;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 public class FieldController {
@@ -40,89 +38,67 @@ public class FieldController {
     private UserService userService;
 
     @InitBinder()
-    protected void initBinder(WebDataBinder binder){
+    protected void initBinder(WebDataBinder binder) {
         binder.addValidators(addFieldValidator);
     }
 
     @GetMapping({"/field"})
     @PreAuthorize("hasRole('User')")
-    public ArrayList<Field> allFieldUser(@AuthenticationPrincipal UserDetails userDetails){
+    public ArrayList<Field> viewFieldsUser(@AuthenticationPrincipal UserDetails userDetails) {
         User user = userService.getUserByUserName(userDetails.getUsername());
-        ArrayList<Field> fields = new ArrayList<>();
-        try {
-            fields = fieldService.getFieldUser(user);
-        }catch (Exception e){
-            LoggerFactory.getLogger(FieldController.class).error("Failed to fetch field data");
-        }finally {
-            LoggerFactory.getLogger(FieldController.class).info("Fetch data "+fields.size()+" fields");
-        }
-        return fields;
+
+        return fieldService.getFieldsUser(user);
     }
 
     @GetMapping({"/field/addfield/uldkitems/{id}"})
     @PreAuthorize("hasRole('User')")
-    public ArrayList<UldkItem> getUldkItems(@PathVariable String id) throws IOException {
+    public ArrayList<UldkItem> getUldkItems(@PathVariable String id) {
         String[] tmp = id.split("=");
-        if(tmp.length==1)
+
+        if (tmp.length == 1)
             return AdministrativeNames.getNames(tmp[0], "");
-        else if(tmp.length==2)
+        else if (tmp.length == 2)
             return AdministrativeNames.getNames(tmp[0], tmp[1]);
+
         return null;
     }
 
     @DeleteMapping("/field/dell/{id}")
     @PreAuthorize("hasRole('User')")
-    public void deleteField(@PathVariable Long id) {
-
-       try {
-           fieldService.deleteFieldById(id);
-       }catch (Exception e){
-           LoggerFactory.getLogger(FieldController.class).error("Field deletion failed");
-       }finally {
-           LoggerFactory.getLogger(FieldController.class).info("Delete field id="+id);
-       }
+    public void deleteFieldId(@PathVariable Long id, @AuthenticationPrincipal UserDetails userDetails) {
+        User user = userService.getUserByUserName(userDetails.getUsername());
+        fieldService.deleteFieldById(id, user);
     }
 
     @PostMapping("/field/addfield")
     @PreAuthorize("hasRole('User')")
-    public Field addField(@RequestBody @Valid Field field, BindingResult bindingResult, @AuthenticationPrincipal UserDetails userDetails) throws IOException {
+    public Field addField(@RequestBody @Valid Field field, BindingResult bindingResult, @AuthenticationPrincipal UserDetails userDetails) {
 
         User user = userService.getUserByUserName(userDetails.getUsername());
-        ArrayList<Field> same = fieldService.getFieldByName(field.getFieldName());
+        ArrayList<Field> same = fieldService.getFieldByName(field.getName(), user);
 
-        String fieldNumber=field.getFieldNumber()+"."+field.getFieldNumberRegistration();
+        String fieldNumber = field.getNumber() + "." + field.getNumberRegistration();
 
-        if(same.size()!=0 || bindingResult.hasErrors() || AdministrativeNames.getNames("Dzialka",fieldNumber)==null){
+        if (same.size() != 0 || bindingResult.hasErrors() || AdministrativeNames.getNames("Dzialka", fieldNumber) == null) {
             return null;
         }
 
-        field.setFieldGmina(Formater.changeOnOnlyFirstLetter(field.getFieldGmina()));
-        field.setFieldWojewodztwo(Formater.changeOnOnlyFirstLetter(field.getFieldWojewodztwo()));
-        field.setFieldMiejscowosc(Formater.changeOnOnlyFirstLetter(field.getFieldMiejscowosc()));
-        field.setFieldNameField(Formater.changeOnOnlyFirstLetter(field.getFieldName()));
+        field.setGmina(Formater.changeOnOnlyFirstLetter(field.getGmina()));
+        field.setWojewodztwo(Formater.changeOnOnlyFirstLetter(field.getWojewodztwo()));
+        field.setMiejscowosc(Formater.changeOnOnlyFirstLetter(field.getMiejscowosc()));
+        field.setName(Formater.changeOnOnlyFirstLetter(field.getName()));
+        field.setUser(user);
 
-        Field add=new Field();
-        try {
-            field.setUser(user);
-            add=fieldService.addField(field);
-        }catch (Exception e){
-            LoggerFactory.getLogger(FieldController.class).error("Field add failed");
-        }
-        LoggerFactory.getLogger(FieldController.class).info("Add field");
-        return add;
+        return fieldService.addField(field, user);
     }
-
 
     @PutMapping("/field/edit/{id}")
     @PreAuthorize("hasRole('User')")
-    public Field editField(@PathVariable Long id, @RequestBody Field field) {
+    public Field editField(@PathVariable Long id, @RequestBody Field field, @AuthenticationPrincipal UserDetails userDetails) {
 
-        try {
-            fieldService.editFieldAreaCategoryPropertyById(id, field.getFieldArea());
-        }catch (Exception e){
-            LoggerFactory.getLogger(FieldController.class).error("Failed to edit field");
-        }
-        LoggerFactory.getLogger(FieldController.class).info("Field data changed");
+        User user = userService.getUserByUserName(userDetails.getUsername());
+        fieldService.editFieldAreaCategoryPropertyById(id, field.getArea(), user);
+
         return null;
     }
 
@@ -132,12 +108,12 @@ public class FieldController {
     public ResponseEntity<InputStreamResource> generatePDFField(@AuthenticationPrincipal UserDetails user) throws IOException {
 
         User u = userService.getUserByUserName(user.getUsername());
-        ArrayList<Field> listField = fieldService.getFieldUser(u);
+        ArrayList<Field> listField = fieldService.getFieldsUser(u);
         TemplatePdf exporter = new FieldPdfExporter(listField);
-        ByteArrayInputStream pdf= exporter.export();
+        ByteArrayInputStream pdf = exporter.export();
         HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add("Content-Disposition","inline;file=lcwd.pdf");
-        LoggerFactory.getLogger(FieldController.class).info("Creating a pdf with field data!");
+        httpHeaders.add("Content-Disposition", "inline;file=lcwd.pdf");
+
         return ResponseEntity.ok().headers(httpHeaders).contentType(MediaType.APPLICATION_PDF).body(new InputStreamResource(pdf));
     }
 

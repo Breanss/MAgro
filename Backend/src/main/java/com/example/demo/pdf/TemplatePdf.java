@@ -15,7 +15,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-public class TemplatePdf{
+public class TemplatePdf {
 
     private Font f;
 
@@ -45,11 +45,11 @@ public class TemplatePdf{
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         Document document = new Document(PageSize.A4);
         PdfWriter.getInstance(document, outputStream);
-        Image jpg = Image.getInstance("backend/logo.png");
+        Image jpg = Image.getInstance("logo.png");
         document.open();
         PdfPTable tableLogo = new PdfPTable(2);
         tableLogo.setWidthPercentage(100f);
-        tableLogo.setWidths(new float[] {5f,5f});
+        tableLogo.setWidths(new float[]{5f, 5f});
         writeTableLogo(tableLogo, jpg);
         document.add(tableLogo);
         body(document);
@@ -58,5 +58,6 @@ public class TemplatePdf{
         return new ByteArrayInputStream(outputStream.toByteArray());
     }
 
-    public void body(Document document){ }
+    public void body(Document document) {
+    }
 }

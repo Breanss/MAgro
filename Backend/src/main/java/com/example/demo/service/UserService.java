@@ -28,7 +28,7 @@ public class UserService {
         Set<Role> userRoles = new HashSet<>();
         userRoles.add(role);
         user.setRole(userRoles);
-        user.setUserPassword(getEncodedPassword(user.getUserPassword()));
+        user.setPassword(getEncodedPassword(user.getPassword()));
 
         return userDao.save(user);
     }
@@ -37,7 +37,7 @@ public class UserService {
         return passwordEncoder.encode(password);
     }
 
-    public User getUserByUserName(String username){
+    public User getUserByUserName(String username) {
         return userDao.findUserNameByName(username);
     }
 

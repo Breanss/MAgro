@@ -14,14 +14,14 @@ import java.util.ArrayList;
 
 @Repository
 public interface FieldDao extends CrudRepository<Field, Long> {
-    @Query("SELECT f  FROM Field f where f.user = ?1 and f.fieldActive=true ")
-    ArrayList<Field> finAllByUser(User user);
+    @Query("SELECT f  FROM Field f where f.user = ?1 and f.active=true ")
+    ArrayList<Field> findByUser(User user);
 
-    @Query("SELECT f  FROM Field f where f.fieldName = ?1")
-    ArrayList<Field> findFieldByName(String name);
+    @Query("SELECT f  FROM Field f where f.name = ?1")
+    ArrayList<Field> findByName(String name);
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE Field f SET f.fieldArea=:area where f.fieldId = :id")
+    @Query(value = "UPDATE Field f SET f.area=:area where f.fieldId = :id")
     void updateAreaCategoryPropertyFieldById(@Param("id") Long id, @Param("area") BigDecimal area);
 }

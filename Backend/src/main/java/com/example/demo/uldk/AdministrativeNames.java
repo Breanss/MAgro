@@ -1,23 +1,20 @@
 package com.example.demo.uldk;
 
-import com.example.demo.controller.FieldController;
 import com.example.demo.model.UldkItem;
-import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 
 public abstract class AdministrativeNames {
-    public static ArrayList<UldkItem> getNames(String type, String teryt) throws IOException {
-        if(teryt.isEmpty())
-            teryt="";
+    public static ArrayList<UldkItem> getNames(String type, String teryt) {
+        if (teryt.isEmpty())
+            teryt = "";
 
-        String param="";
-        String result="";
+        String param = "";
+        String result = "";
         ArrayList<UldkItem> uldkItems = new ArrayList<>();
 
         switch (type) {
@@ -29,15 +26,17 @@ public abstract class AdministrativeNames {
                 param = "GetCountyById";
                 result = "county";
             }
-            case "Gmina" ->{
-                param="GetCommuneById";
-                result="commune";
-            }case "Region"->{
-                param="GetRegionById";
-                result="region";
-            }case "Dzialka"->{
-                param="GetParcelById";
-                result="geom_wkt";
+            case "Gmina" -> {
+                param = "GetCommuneById";
+                result = "commune";
+            }
+            case "Region" -> {
+                param = "GetRegionById";
+                result = "region";
+            }
+            case "Dzialka" -> {
+                param = "GetParcelById";
+                result = "geom_wkt";
             }
         }
 
@@ -58,7 +57,7 @@ public abstract class AdministrativeNames {
                 }
             }
             bufferedReader.close();
-        }catch (Exception e){
+        } catch (Exception e) {
             return null;
         }
 

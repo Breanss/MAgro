@@ -13,16 +13,18 @@ import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class FieldPdfExporter extends TemplatePdf{
+public class FieldPdfExporter extends TemplatePdf {
     private Font f;
-    private  ArrayList<Field> listFields;
-    public FieldPdfExporter( ArrayList<Field> listFields) throws IOException {
+    private ArrayList<Field> listFields;
+
+    public FieldPdfExporter(ArrayList<Field> listFields) throws IOException {
         super();
-        this.listFields=listFields;
+        this.listFields = listFields;
         String FONT = "c:/windows/fonts/arial.ttf";
         BaseFont bf = BaseFont.createFont(FONT, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
         f = new Font(bf);
     }
+
     private void writeTableHeader(PdfPTable table) {
         PdfPCell cell = new PdfPCell();
         cell.setBackgroundColor(Color.getHSBColor(136, 34, 29));
@@ -60,24 +62,24 @@ public class FieldPdfExporter extends TemplatePdf{
         for (Field field : listFields) {
             cell.setPhrase(new Phrase(Integer.toString(licznik) + ".", f));
             table.addCell(cell);
-            cell.setPhrase(new Phrase(field.getFieldName(), f));
+            cell.setPhrase(new Phrase(field.getName(), f));
             table.addCell(cell);
-            cell.setPhrase(new Phrase(field.getFieldNumberRegistration(), f));
+            cell.setPhrase(new Phrase(field.getNumberRegistration(), f));
             table.addCell(cell);
-            cell.setPhrase(new Phrase(field.getFieldArgonomicCategory(), f));
+            cell.setPhrase(new Phrase(field.getArgonomicCategory(), f));
             table.addCell(cell);
-            cell.setPhrase(new Phrase(field.getFieldProperty(), f));
+            cell.setPhrase(new Phrase(field.getProperty(), f));
             table.addCell(cell);
-            cell.setPhrase(new Phrase(String.format("%.2f", field.getFieldArea()) + " ha", f));
+            cell.setPhrase(new Phrase(String.format("%.2f", field.getArea()) + " ha", f));
             table.addCell(cell);
 
-            if (field.getFieldProperty().equals("Dzierżawa")) {
-                sumRent += field.getFieldArea().doubleValue();
-            } else if (field.getFieldProperty().equals("Własność")) {
-                sumOwn += field.getFieldArea().doubleValue();
+            if (field.getProperty().equals("Dzierżawa")) {
+                sumRent += field.getArea().doubleValue();
+            } else if (field.getProperty().equals("Własność")) {
+                sumOwn += field.getArea().doubleValue();
             }
 
-            sumArea += field.getFieldArea().doubleValue();
+            sumArea += field.getArea().doubleValue();
             licznik++;
         }
 
@@ -99,14 +101,14 @@ public class FieldPdfExporter extends TemplatePdf{
     }
 
 
-    public void body(Document document){
+    public void body(Document document) {
         f.setSize(18);
         Paragraph p = new Paragraph("Lista pól", f);
         p.setAlignment(Paragraph.ALIGN_CENTER);
         document.add(p);
         PdfPTable table = new PdfPTable(6);
         table.setWidthPercentage(100f);
-        table.setWidths(new float[] {0.7f, 1.8f, 2.2f, 1.9f, 2.2f, 1f});
+        table.setWidths(new float[]{0.7f, 1.8f, 2.2f, 1.9f, 2.2f, 1f});
         table.setSpacingBefore(10);
         f.setSize(11);
         f.setColor(Color.WHITE);

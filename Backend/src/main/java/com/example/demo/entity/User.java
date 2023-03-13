@@ -8,12 +8,12 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
-    private String userName;
-    private String userEmail;
-    private String userTelephonNumber;
-    private String userFirstName;
-    private String userLastName;
-    private String userPassword;
+    private String name;
+    private String email;
+    private String telephonNumber;
+    private String firstName;
+    private String lastName;
+    private String password;
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "USER_ROLE",
             joinColumns = {
@@ -25,36 +25,34 @@ public class User {
     )
     private Set<Role> role;
 
-    public String getUserName() {
-        return userName;
+    public String getName() {
+        return name;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setName(String userName) {
+        this.name = userName;
     }
 
-    public String getUserFirstName() {
-        return userFirstName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setUserFirstName(String userFirstName) {
-        this.userFirstName = userFirstName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getUserLastName() {
-        return userLastName;
+    public String getLastName() {return lastName;}
+
+    public void setUserLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public void setUserLastName(String userLastName) {
-        this.userLastName = userLastName;
+    public String getPassword() {
+        return password;
     }
 
-    public String getUserPassword() {
-        return userPassword;
-    }
-
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Set<Role> getRole() {
@@ -65,20 +63,20 @@ public class User {
         this.role = role;
     }
 
-    public String getUserEmail() {
-        return userEmail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUserEmail(String email) {
-        this.userEmail = email;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getUserTelephonNumber() {
-        return userTelephonNumber;
+    public String getTelephonNumber() {
+        return telephonNumber;
     }
 
-    public void setUserTelephonNumber(String telephonNumber) {
-        this.userTelephonNumber = telephonNumber;
+    public void setTelephonNumber(String telephonNumber) {
+        this.telephonNumber = telephonNumber;
     }
 
     public Long getId() {

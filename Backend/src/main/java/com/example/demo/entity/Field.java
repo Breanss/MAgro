@@ -4,20 +4,19 @@ import java.math.BigDecimal;
 
 @Entity
 public class Field {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long fieldId;
-    private String fieldWojewodztwo;
-    private String fieldGmina;
-    private String fieldMiejscowosc;
-    private String fieldNumber;
-    private String fieldNumberRegistration;
-    private String fieldName;
-    private BigDecimal fieldArea;
-    private String fieldArgonomicCategory;
-    private String fieldProperty;
-    private Boolean fieldActive = true;
+    private String wojewodztwo;
+    private String gmina;
+    private String miejscowosc;
+    private String number;
+    private String numberRegistration;
+    private String name;
+    private BigDecimal area;
+    private String argonomicCategory;
+    private String property;
+    private Boolean active = true;
 
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.REFRESH})
     @JoinTable(name = "USER_FIELD",
@@ -39,56 +38,84 @@ public class Field {
         this.fieldId = fieldId;
     }
 
-    public String getFieldNumberRegistration() {
-        return fieldNumberRegistration;
+    public String getWojewodztwo() {
+        return wojewodztwo;
     }
 
-    public void setFieldNumberRegistration(String fieldNumberRegistration) {
-        this.fieldNumberRegistration = fieldNumberRegistration;
+    public void setWojewodztwo(String wojewodztwo) {
+        this.wojewodztwo = wojewodztwo;
     }
 
-    public String getFieldName() {
-        return fieldName;
+    public String getGmina() {
+        return gmina;
     }
 
-    public void setFieldNameField(String fieldNameField) {
-        this.fieldName = fieldNameField;
+    public void setGmina(String gmina) {
+        this.gmina = gmina;
     }
 
-    public BigDecimal getFieldArea() {
-        return fieldArea;
+    public String getMiejscowosc() {
+        return miejscowosc;
     }
 
-    public void setFieldArea(BigDecimal fieldArea) {
-        this.fieldArea = fieldArea;
+    public void setMiejscowosc(String miejscowosc) {
+        this.miejscowosc = miejscowosc;
     }
 
-    public void setFieldName(String fieldName) {
-        this.fieldName = fieldName;
+    public String getNumber() {
+        return number;
     }
 
-    public String getFieldArgonomicCategory() {
-        return fieldArgonomicCategory;
+    public void setNumber(String number) {
+        this.number = number;
     }
 
-    public void setFieldArgonomicCategory(String fieldArgonomicCategory) {
-        this.fieldArgonomicCategory = fieldArgonomicCategory;
+    public String getNumberRegistration() {
+        return numberRegistration;
     }
 
-    public String getFieldProperty() {
-        return fieldProperty;
+    public void setNumberRegistration(String numberRegistration) {
+        this.numberRegistration = numberRegistration;
     }
 
-    public void setFieldProperty(String fieldProperty) {
-        this.fieldProperty = fieldProperty;
+    public String getName() {
+        return name;
     }
 
-    public Boolean getFieldActive() {
-        return fieldActive;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setFieldActive(Boolean fieldActive) {
-        this.fieldActive = fieldActive;
+    public BigDecimal getArea() {
+        return area;
+    }
+
+    public void setArea(BigDecimal area) {
+        this.area = area;
+    }
+
+    public String getArgonomicCategory() {
+        return argonomicCategory;
+    }
+
+    public void setArgonomicCategory(String argonomicCategory) {
+        this.argonomicCategory = argonomicCategory;
+    }
+
+    public String getProperty() {
+        return property;
+    }
+
+    public void setProperty(String property) {
+        this.property = property;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 
     public User getUser() {
@@ -97,37 +124,5 @@ public class Field {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public String getFieldWojewodztwo() {
-        return fieldWojewodztwo;
-    }
-
-    public void setFieldWojewodztwo(String fieldWojewodztwo) {
-        this.fieldWojewodztwo = fieldWojewodztwo;
-    }
-
-    public String getFieldNumber() {
-        return fieldNumber;
-    }
-
-    public void setFieldNumber(String fieldNumber) {
-        this.fieldNumber = fieldNumber;
-    }
-
-    public String getFieldGmina() {
-        return fieldGmina;
-    }
-
-    public void setFieldGmina(String fieldGmina) {
-        this.fieldGmina = fieldGmina;
-    }
-
-    public String getFieldMiejscowosc() {
-        return fieldMiejscowosc;
-    }
-
-    public void setFieldMiejscowosc(String fieldMiejscowosc) {
-        this.fieldMiejscowosc = fieldMiejscowosc;
     }
 }

@@ -1,6 +1,5 @@
 package com.example.demo.tools;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public abstract class Validators {
