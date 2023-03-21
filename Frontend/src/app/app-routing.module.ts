@@ -14,11 +14,14 @@ import {CropsComponent} from "./Application/CropsCard/crops/crops.component";
 import {TreatmentsComponent} from "./Application/TreatmentsCard/treatments/treatments.component";
 import {FinancesComponent} from "./Application/FinancesCard/finances/finances.component";
 import {YieldComponent} from "./Application/YieldCard/yield/yield.component";
+import {DeclarecropsComponent} from "./Application/CropsCard/declarecrops/declarecrops.component";
+import {HeaderappComponent} from "./Application/Shared/headerapp/headerapp.component";
 
 
 const routes: Routes = [
   { path: '', component:HomeComponent},
   { path: 'admin', component:AdminComponent, canActivate:[AuthGuard],data:{roles:['User']} },
+  { path: 'loginUsername', component:HeaderappComponent, canActivate:[AuthGuard],data:{roles:['User']} },
   { path: 'homeapp', component:HomeappComponent, canActivate:[AuthGuard],data:{roles:['User']}},
   { path: 'field', component:FieldsComponent, canActivate:[AuthGuard],data:{roles:['User']}},
   { path: 'field/pdf', component:FieldsComponent, canActivate:[AuthGuard],data:{roles:['User']}},
@@ -28,9 +31,12 @@ const routes: Routes = [
   { path: 'field/edit/:id', component:DialogeditComponent, canActivate:[AuthGuard],data:{roles:['User']}},
   { path: 'seasons/addseason', component:CropsComponent, canActivate:[AuthGuard],data:{roles:['User']}},
   { path: 'seasons', component:CropsComponent, canActivate:[AuthGuard],data:{roles:['User']}},
+  { path: 'seasons/:id', component:CropsComponent, canActivate:[AuthGuard],data:{roles:['User']}},
   { path: 'crops', component:CropsComponent, canActivate:[AuthGuard],data:{roles:['User']}},
   { path: 'crops/totalarea', component:CropsComponent, canActivate:[AuthGuard],data:{roles:['User']}},
   { path: 'crops/whetheralldeclared', component:CropsComponent, canActivate:[AuthGuard],data:{roles:['User']}},
+  { path: 'crops/:id/setcrops', component:DeclarecropsComponent, canActivate:[AuthGuard],data:{roles:['User']}},
+  { path: 'crops/typecrop', component:DeclarecropsComponent, canActivate:[AuthGuard],data:{roles:['User']}},
   { path: 'treatments', component:TreatmentsComponent, canActivate:[AuthGuard],data:{roles:['User']}},
   { path: 'finances', component:FinancesComponent, canActivate:[AuthGuard],data:{roles:['User']}},
   { path: 'yields', component:YieldComponent, canActivate:[AuthGuard],data:{roles:['User']}},

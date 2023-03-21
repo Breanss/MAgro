@@ -33,12 +33,11 @@
           <div class="card-body" >
               <p>Całkowity obszar do zadeklarowania upraw to: {{area[c.seasonId]}} ha</p>
               <span class="ok">
-                <p *ngIf="area[whetherDeclared]; else elseBlock" >Zadeklarowano już uprawy na wszystkich działkach!</p>
+                <p *ngIf="whetherDeclared[c.seasonId]==true; else elseBlock" >Zadeklarowano już uprawy na wszystkich działkach!</p>
               </span>
             <ng-template #elseBlock><span class="errorr">Nie zadeklarowano jeszcze upraw na wszystkich działkach!</span></ng-template>
-
             <div class="bd-highlight mt-2">
-              <a class="btn btn-primary btn-sm buttonAdd" download>Zadeklaruj uprawy</a>
+              <a class="btn btn-primary btn-sm buttonAdd"  routerLink="/crops/{{c.seasonId}}/setcrops"  >Zadeklaruj uprawy</a>
               <a class="btn btn-primary btn-sm ms-3 buttonPdf">Zakończ sezon</a>
             </div>
 

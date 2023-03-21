@@ -29,6 +29,8 @@ import { CropsComponent } from './Application/CropsCard/crops/crops.component';
 import { TreatmentsComponent } from './Application/TreatmentsCard/treatments/treatments.component';
 import { FinancesComponent } from './Application/FinancesCard/finances/finances.component';
 import { YieldComponent } from './Application/YieldCard/yield/yield.component';
+import { DeclarecropsComponent } from './Application/CropsCard/declarecrops/declarecrops.component';
+import { DialogdeleteComponent } from './Application/FieldsCard/dialogdelete/dialogdelete.component';
 
 
 @NgModule({
@@ -51,6 +53,8 @@ import { YieldComponent } from './Application/YieldCard/yield/yield.component';
     TreatmentsComponent,
     FinancesComponent,
     YieldComponent,
+    DeclarecropsComponent,
+    DialogdeleteComponent,
 
 
   ],

@@ -1,0 +1,19 @@
+.buttonAdd {
+  background-color: #45a46f;
+  border-style: none;
+}
+
+.buttonAdd:hover {
+  background-color: #67c68f;
+  border-style: none;
+}
+
+.buttonBack {
+  background-color: #ec494e;
+  border-style: none;
+}
+
+.buttonBack:hover {
+  background-color: #fe6b6f;
+  border-style: none;
+}

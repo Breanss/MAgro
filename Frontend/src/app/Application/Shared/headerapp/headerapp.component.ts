@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
+import {UserAuthService} from "../../../_services/user-auth.service";
+import {UserService} from "../../../_services/user.service";
 
 @Component({
   selector: 'app-headerapp',
@@ -8,44 +10,79 @@ import {Router} from "@angular/router";
 })
 export class HeaderappComponent implements OnInit {
 
-  public href: string = ""
-  public home: string = ""
-  public field: string = ""
-  public crop: string = ""
-  public treatment: string = ""
-  public finance: string = ""
-  public yield: string = ""
+  public href: string = "";
+  public home: string = "";
+  public field: string = "";
+  public open: string = "";
+  public crop: string = "";
+  public username: string = "";
+  public treatment: string = "";
+  public finance: string = "";
+  public yield: string = "";
 
-  constructor(private router: Router) {}
-
-  ngOnInit() {
-    this.home=""
-    this.field=""
-    this.crop=""
-    this.treatment=""
-    this.finance=""
-    this.yield=""
-    this.href = this.router.url
-    this.activeMenu(this.href)
+  constructor(private router: Router,  private userAuthService: UserAuthService, private userService:UserService) {
   }
 
-  private activeMenu(url:String):void{
-    switch (url){
+  ngOnInit() {
+    this.home = "";
+    this.field = "";
+    this.crop = "";
+    this.treatment = "";
+    this.finance = "";
+    this.yield = "";
+    this.open = "";
+
+    this.href = this.router.url;
+    this.activeMenu(this.href);
+
+      this.userService.loginUsername().subscribe(
+      (response)=>{
+        this.username=response;
+      },(error => {
+          this.userAuthService.clear();
+        })
+      )
+  }
+
+  private activeMenu(url: String): void {
+    const tab = url.split("/");
+
+    switch (url) {
       case "/homeapp":
-        this.home="home"; break;
+        this.home = "active";
+        break;
       case "/field":
       case "/field/addfield":
-        this.field="home"; break;
+        this.field = "active";
+        break;
       case "/crops":
-        this.crop="home"; break;
+      case "/crops/" + tab[2] + "/setcrops":
+        this.crop = "active";
+        break;
       case "/treatments":
-        this.treatment="home"; break;
+        this.treatment = "active";
+        break;
       case "/finances":
-        this.finance="home"; break;
+        this.finance = "active";
+        break;
       case "/yields":
-        this.yield="home"; break;
+        this.yield = "active";
+        break;
     }
   }
 
+  public logout() {
+    this.userAuthService.clear();
+    this.router.navigate(['/']);
+  }
 
+
+  public togller(){
+    if(this.open=="open"){
+      this.open="show";
+    }else{
+      this.open="open"
+    }
+
+  }
 }

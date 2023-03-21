@@ -1,24 +1,23 @@
-
 @media (min-width: 900px) {
-  .container{
+  .container {
     width: 50%;
   }
 }
 
-.button-color-register{
+.button-color-register {
   background-color: #37a447;
   color: white;
 }
 
-.button-color-register:hover{
+.button-color-register:hover {
   background-color: #158225;
-
 }
-.register{
+
+.register {
   width: 100%;
 }
 
-.button-text{
+.button-text {
   font-size: 17px;
   font-weight: bold;
 }

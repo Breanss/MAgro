@@ -1,32 +1,38 @@
-.fixActionRow {
-  display: flex;
-  width: 400pt;
+.all{
+  width: 100%;
+  position:absolute;
+  z-index:0;
 }
-
-.spacer {
-  flex-grow: 1;
-}
-
-.full {
+.demo-table {
   width: 100%;
 }
 
-.buttonAdd {
+.mat-mdc-row .mat-mdc-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  border-color: currentColor;
+}
+
+.buttonAdd{
   background-color: #45a46f;
   border-style: none;
 }
 
-.buttonAdd:hover {
-  background-color: #67c68f;
+.buttonAdd:hover{
+  background-color:#67c68f;
   border-style: none;
 }
 
-.buttonBack {
-  background-color: #ec494e;
+.buttonBack{
+  background-color:#ec494e;
   border-style: none;
 }
 
-.buttonBack:hover {
+.buttonBack:hover{
   background-color: #fe6b6f;
   border-style: none;
 }

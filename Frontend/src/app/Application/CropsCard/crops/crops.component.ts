@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Injectable, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {FieldService} from "../../../_services/field.service";
 import {CropService} from "../../../_services/crop.service";
+
+
 
 interface seasonItem {
   seasonId: any
@@ -16,68 +17,73 @@ interface seasonItem {
 export class CropsComponent implements OnInit {
   public addSeasonForm!: FormGroup;
   public itemsSeason!: seasonItem[];
-  public year:any;
-  public area:any;
-  public whetherDeclared:any;
+  public year: any;
+  public area: any;
+  public whetherDeclared!: any;
 
-  constructor(private cropsService: CropService, private formBuilder: FormBuilder) {
-    this.totalArea()
-    this.whetherAllDeclared();
-    this.allSeason();
-  }
+  constructor(private cropsService: CropService, private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
     this.addSeasonForm = this.formBuilder.group({
       year: '',
     })
 
+    this.addSeasonForm.controls['year'].setValue("2023");
+
+    this.totalArea();
+    this.whetherAllDeclared();
+    this.allSeason();
   }
 
   public addSeason() {
     this.cropsService.addSeason(this.addSeasonForm.value).subscribe(
       (response: any) => {
-          this.allSeason();
-          this.totalArea();
-          this.whetherAllDeclared();
-      },(error) => {
-          console.log(error);
+        this.totalArea();
+        this.whetherAllDeclared();
+        this.allSeason();
+      }, (error) => {
+        console.log(error);
       });
   }
 
 
-  public allSeason(){
+  public allSeason() {
     this.cropsService.allSeasonUser().subscribe(
       (response) => {
-        console.log(response)
-        this.itemsSeason=response;
+        this.itemsSeason = response;
+        if (this.area == undefined) {
+          this.area = new Array(this.itemsSeason.length);
+        }
+        if (this.whetherDeclared == undefined) {
+          this.whetherDeclared = new Array(this.itemsSeason.length);
+        }
       },
-      (error)=>{
+      (error) => {
         console.log(error);
       }
     );
   }
 
-  public totalArea(){
+  public totalArea() {
     this.cropsService.totalAreaCropsForSeason().subscribe(
       (response) => {
-        console.log(response)
-         this.area=response;
+        this.area = response;
       },
-      (error)=>{
+      (error) => {
         console.log(error);
       }
     );
   }
 
-  public whetherAllDeclared(){
+  public whetherAllDeclared() {
     this.cropsService.whetherAllCropsAreDeclaredForSeasons().subscribe(
       (response) => {
-        console.log(response)
-        this.whetherDeclared=response;
+        this.whetherDeclared = response;
       },
-      (error)=>{
+      (error) => {
         console.log(error);
       }
     );
   }
+
 }

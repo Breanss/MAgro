@@ -17,6 +17,12 @@ export class CropService {
     return this.httpclient.post(this.PATH_OF_API + '/seasons/addseason', seasonData);
   }
 
+  public seasonById(id: any):Observable<any>{
+    return this.httpclient.get(this.PATH_OF_API + '/season/'+id, {
+      responseType: 'json',
+    });
+  }
+
   public allSeasonUser(): Observable<any> {
     return this.httpclient.get(this.PATH_OF_API + '/seasons', {responseType:'json'});
   }
@@ -32,4 +38,11 @@ export class CropService {
       responseType: 'json',
     });
   }
+
+  public allCropSeason(id: any):Observable<any>{
+    return this.httpclient.get(this.PATH_OF_API + '/crops/'+id+'/setcrops', {
+      responseType: 'json',
+    });
+  }
+
 }

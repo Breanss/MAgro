@@ -16,63 +16,63 @@
   background-color: #37a447;
 }
 
-.buttonIcon{
+.buttonIcon {
   border-style: none;
   background-color: white;
 
 }
 
-.buttonIconEdit{
+.buttonIconEdit {
   color: #45a46f;
 }
 
-.buttonIconEdit:hover{
-  color:#67c68f
+.buttonIconEdit:hover {
+  color: #67c68f
 }
 
-.buttonIconDelete{
-  color:#ec494e;
+.buttonIconDelete {
+  color: #ec494e;
 }
 
-.buttonIconDelete:hover{
+.buttonIconDelete:hover {
   color: #fe6b6f;
 }
 
-.buttonAdd{
+.buttonAdd {
   background-color: #45a46f;
   border-style: none;
 }
 
-.buttonAdd:hover{
-  background-color:#67c68f;
+.buttonAdd:hover {
+  background-color: #67c68f;
   border-style: none;
 }
 
-.buttonPdf{
-  background-color:#ec494e;
+.buttonPdf {
+  background-color: #ec494e;
   border-style: none;
 }
 
-.buttonPdf:hover{
+.buttonPdf:hover {
   background-color: #fe6b6f;
   border-style: none;
 }
 
 .md-select-menu-container,
 .md-open-menu-container {
-  z-index:999999 !important;
+  z-index: 999999 !important;
 }
 
-.all{
+.all {
   width: 100%;
-  position:absolute;
-  z-index:0;
+  position: absolute;
+  z-index: 0;
 }
 
-.buttonIconLocation{
+.buttonIconLocation {
   color: #6495ed;
 }
 
-.buttonIconLocation:hover{
+.buttonIconLocation:hover {
   color: #86b7ff;
 }

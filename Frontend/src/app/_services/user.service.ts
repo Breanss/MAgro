@@ -25,6 +25,11 @@ export class UserService {
       responseType: 'text',
     });
   }
+  public loginUsername() {
+    return this.httpclient.get(this.PATH_OF_API + '/loginUsername', {
+      responseType: 'text',
+    });
+  }
 
 
   public forAdmin() {

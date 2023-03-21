@@ -1,9 +1,9 @@
-import { Component, AfterViewInit } from '@angular/core';
+import {Component, AfterViewInit} from '@angular/core';
 import "@vaadin/vaadin-combo-box";
 import * as L from 'leaflet';
 // @ts-ignore
 import wellknown from "wellknown/wellknown.js";
-import {html, render} from "lit";
+
 
 @Component({
   selector: 'app-map',
@@ -13,10 +13,11 @@ import {html, render} from "lit";
 export class MapComponent implements AfterViewInit {
   map?: L.Map;
   private geojsonLayer: any = undefined;
+
   private initMap(): void {
 
     this.map = L.map('map', {
-      center: [ 51.8282, 19.5795 ],
+      center: [51.8282, 19.5795],
       zoom: 6
     });
 
@@ -30,7 +31,8 @@ export class MapComponent implements AfterViewInit {
   }
 
 
-  constructor() { }
+  constructor() {
+  }
 
   ngAfterViewInit(): void {
     this.initMap();
@@ -43,7 +45,7 @@ export class MapComponent implements AfterViewInit {
   async getParcelById(teryt: string = "") {
     if (!this.geojsonLayer) {
       this.geojsonLayer = L.geoJSON(undefined, {
-        onEachFeature: function(feature, layer) {
+        onEachFeature: function (feature, layer) {
           layer.bindPopup(feature.properties.popupContent)
         }
       }).addTo(this.map!);
