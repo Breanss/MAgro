@@ -1,19 +1,19 @@
-.buttonAdd{
+.buttonAdd {
   background-color: #45a46f;
   border-style: none;
 }
 
-.buttonAdd:hover{
-  background-color:#67c68f;
+.buttonAdd:hover {
+  background-color: #67c68f;
   border-style: none;
 }
 
-.buttonBack{
-  background-color:#ec494e;
+.buttonBack {
+  background-color: #ec494e;
   border-style: none;
 }
 
-.buttonBack:hover{
+.buttonBack:hover {
   background-color: #fe6b6f;
   border-style: none;
 }
@@ -26,4 +26,12 @@
 .form-check-input:checked {
   background-color: #56b570;
   border-color: #56b570;
+}
+
+.errorAdd {
+  color: red;
+}
+
+.okAdd {
+  color: limegreen;
 }

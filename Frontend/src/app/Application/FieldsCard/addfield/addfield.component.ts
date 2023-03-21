@@ -15,19 +15,20 @@ interface uldkItem {
 })
 export class AddfieldComponent implements OnInit {
 
-  message: String = ''
-  editForm!: FormGroup;
-  itemsWojew!: uldkItem[];
-  itemsPowiat!: uldkItem[];
-  itemsGmina!: uldkItem[];
-  itemsMiejscowosc!: uldkItem[];
+  public message: String = '';
+  public color: String = '';
+  public editForm!: FormGroup;
+  public itemsWojew!: uldkItem[];
+  public itemsPowiat!: uldkItem[];
+  public itemsGmina!: uldkItem[];
+  public itemsMiejscowosc!: uldkItem[];
 
-  item!:uldkItem;
+  public item!: uldkItem;
 
   constructor(private fieldService: FieldService, private formBuilder: FormBuilder) {
   }
 
-  async ngOnInit(){
+  public async ngOnInit() {
     this.editForm = this.formBuilder.group({
       wojewodztwo: '',
       powiat: '',
@@ -38,7 +39,7 @@ export class AddfieldComponent implements OnInit {
       name: '',
       area: '',
       argonomicCategory: '',
-      number:'',
+      number: '',
     })
 
 
@@ -52,64 +53,64 @@ export class AddfieldComponent implements OnInit {
 
     this.fieldService.getUldkItems("Wojewodztwo").subscribe(
       (response: any) => {
-        this.itemsWojew=response;
+        this.itemsWojew = response;
       })
   }
 
-  async wojewCheck() {
+  public async wojewCheck() {
 
     this.editForm.controls['powiat'].enable();
     this.editForm.controls['gmina'].disable();
     this.editForm.controls['miejscowosc'].disable();
     let tmpp = this.editForm.controls['wojewodztwo'].value;
-    let tmp=""
-    this.itemsWojew.forEach(x=>{
-      if(x.name==tmpp){
-        tmp=x.teryt
+    let tmp = "";
+    this.itemsWojew.forEach(x => {
+      if (x.name == tmpp) {
+        tmp = x.teryt;
       }
     });
-    this.fieldService.getUldkItems("Powiat="+tmp).subscribe(
+    this.fieldService.getUldkItems("Powiat=" + tmp).subscribe(
       (response: any) => {
-        this.itemsPowiat=response;
+        this.itemsPowiat = response;
       })
 
   }
 
-  async powiatCheck() {
+  public async powiatCheck() {
     this.editForm.controls['gmina'].enable();
     this.editForm.controls['miejscowosc'].disable();
     let tmpp = this.editForm.controls['powiat'].value;
-    let tmp=""
-    this.itemsPowiat.forEach(x=>{
-      if(x.name==tmpp){
-        tmp=x.teryt
+    let tmp = "";
+    this.itemsPowiat.forEach(x => {
+      if (x.name == tmpp) {
+        tmp = x.teryt;
       }
     });
-    this.fieldService.getUldkItems("Gmina="+tmp).subscribe(
+    this.fieldService.getUldkItems("Gmina=" + tmp).subscribe(
       (response: any) => {
-        this.itemsGmina=response;
+        this.itemsGmina = response;
       })
   }
 
-  async gminaCheck(){
+  public async gminaCheck() {
     this.editForm.controls['miejscowosc'].enable();
     let tmpp = this.editForm.controls['gmina'].value;
-    let tmp=""
-    this.itemsGmina.forEach(x=>{
-      if(x.name==tmpp){
-        tmp=x.teryt
+    let tmp = "";
+    this.itemsGmina.forEach(x => {
+      if (x.name == tmpp) {
+        tmp = x.teryt;
       }
     });
 
 
-    this.fieldService.getUldkItems("Region="+tmp).subscribe(
+    this.fieldService.getUldkItems("Region=" + tmp).subscribe(
       (response: any) => {
-        this.itemsMiejscowosc=response;
+        this.itemsMiejscowosc = response;
       })
 
   }
 
-  addFields() {
+  public addFields() {
     this.message = ''
     let tmp = true;
 
@@ -122,21 +123,22 @@ export class AddfieldComponent implements OnInit {
         }
 
       })
-    let i="";
+    let i = "";
 
-    if(this.itemsMiejscowosc!=null)
-    this.itemsMiejscowosc.forEach(x=>{
-      if(x.name==this.editForm.controls['miejscowosc'].value){
-        i=x.teryt;
-        this.editForm.controls['number'].setValue(x.teryt);
-      }
-    });
+    if (this.itemsMiejscowosc != null)
+      this.itemsMiejscowosc.forEach(x => {
+        if (x.name == this.editForm.controls['miejscowosc'].value) {
+          i = x.teryt;
+          this.editForm.controls['number'].setValue(x.teryt);
+        }
+      });
 
 
-    if (tmp) {
+    if (tmp && this.itemsWojew != null && this.itemsGmina != null && this.itemsPowiat != null) {
       this.fieldService.addField(this.editForm.value).subscribe(
         (response: any) => {
           if (response != null) {
+            this.color = "okAdd";
             this.message = "<p>Pomyślnie dodano pole</p>"
             Array.prototype.slice.call(forms)
               .forEach(function (form) {
@@ -145,7 +147,8 @@ export class AddfieldComponent implements OnInit {
               })
 
           } else {
-            this.message = '<p>">Taka nazwa własna pola już istnieje lub dane działki są nieprawidłowe!</p>'
+            this.color = "errorAdd";
+            this.message = '<p>Dane działki są nieprawidłowe!</p>'
           }
           console.log(response);
         },

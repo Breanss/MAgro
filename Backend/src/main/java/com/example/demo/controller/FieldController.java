@@ -46,7 +46,6 @@ public class FieldController {
     @PreAuthorize("hasRole('User')")
     public ArrayList<Field> viewFieldsUser(@AuthenticationPrincipal UserDetails userDetails) {
         User user = userService.getUserByUserName(userDetails.getUsername());
-
         return fieldService.getFieldsUser(user);
     }
 

@@ -11,6 +11,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
@@ -36,6 +37,8 @@ public class CropController {
         HashMap<Long, BigDecimal> totalArea = new HashMap<>();
 
         User user = userService.getUserByUserName(userDetails.getUsername());
+
+
         ArrayList<Season> seasons = seasonService.findSeasonByUser(user);
 
         for (Season season : seasons) {
@@ -46,6 +49,7 @@ public class CropController {
             }
             totalArea.put(season.getSeasonId(), sum);
         }
+
 
         return totalArea;
     }
@@ -73,4 +77,13 @@ public class CropController {
         return totalArea;
     }
 
+
+    @GetMapping({"/crops/{id}/setcrops"})
+    @PreAuthorize("hasRole('User')")
+    public ArrayList<Crop> viewAllCropSeason(@AuthenticationPrincipal UserDetails userDetails, @PathVariable Long id) {
+        User user = userService.getUserByUserName(userDetails.getUsername());
+        Season season = seasonService.getSeasonById(id, user);
+
+        return cropService.findBySeason(season, user);
+    }
 }

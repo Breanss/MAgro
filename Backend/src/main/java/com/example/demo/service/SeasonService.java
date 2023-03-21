@@ -42,7 +42,7 @@ public class SeasonService {
         try {
             season = seasonDao.findSeasonById(id);
         } catch (Exception e) {
-            LoggerFactory.getLogger(SeasonService.class).error(user.getName() + " failed add season");
+            LoggerFactory.getLogger(SeasonService.class).error(user.getName() + " failed find season by id");
         }
         return season;
     }

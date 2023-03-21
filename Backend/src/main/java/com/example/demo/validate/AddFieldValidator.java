@@ -21,14 +21,14 @@ public class AddFieldValidator implements Validator {
 
     public void errorController(Errors errors, Field field) {
 
-        if (!Validators.regexValidator(field.getWojewodztwo(), "([a-zA-ZĄąĘęÓóŚśŁłŹźŻżĆćŃń]+){5}"))
-            errors.rejectValue("fieldWojewodztwo", "err_code", "Wojewodztwo nieprawidłowe!");
+        if (!Validators.regexValidator(field.getWojewodztwo(), "([a-zA-ZĄąĘęÓóŚśŁłŹźŻżĆćŃń\\- ]+){5}"))
+            errors.rejectValue("wojewodztwo", "err_code", "Wojewodztwo nieprawidłowe!");
 
-        if (!Validators.regexValidator(field.getGmina(), "([a-zA-ZĄąĘęÓóŚśŁłŹźŻżĆćŃń ]+){3}"))
-            errors.rejectValue("fieldGmina", "err_code", "Gmina nieprawidłowa!");
+        if (!Validators.regexValidator(field.getGmina(), "([a-zA-ZĄąĘęÓóŚśŁłŹźŻżĆćŃń\\- ]+){3}"))
+            errors.rejectValue("gmina", "err_code", "Gmina nieprawidłowa!");
 
-        if (!Validators.regexValidator(field.getMiejscowosc(), "([a-zA-ZĄąĘęÓóŚśŁłŹźŻżĆćŃń ]+){3}"))
-            errors.rejectValue("fieldMiejscowosc", "err_code", "Miejscowosc nieprawidłowa!");
+        if (!Validators.regexValidator(field.getMiejscowosc(), "([a-zA-ZĄąĘęÓóŚśŁłŹźŻżĆćŃń\\- ]+){3}"))
+            errors.rejectValue("miejscowosc", "err_code", "Miejscowosc nieprawidłowa!");
 
 
     }
